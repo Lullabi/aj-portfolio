@@ -18,11 +18,10 @@
   --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}
 
 /* display type: soft, wonky, italic */
-.hero h1,.lid-name,.flavor,.sticker,.process li::before,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h2,.rc-brand{
+.hero h1,.lid-name,.flavor,.sticker,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.shelf-title,.rc-brand{
   font-family:var(--f-display);font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144}
 .hero h1{letter-spacing:-.02em;line-height:.95}
 .hero h1 em{color:var(--accent);font-weight:900}
-.process li::before{color:var(--accent)}
 .status b{background:#4CB884}
 
 /* brand mark + nav */
@@ -102,7 +101,6 @@
 .features > div{border-top:3px dotted var(--ink)}
 .glance{border-radius:18px;overflow:hidden}
 .facts{border-radius:6px}
-.shelf a{border-style:dashed;border-radius:999px}
 .btn{border-radius:999px}
 .slot{background:linear-gradient(#3a4470,#1F2A55)}
 :root{--stamp:#E2574C}
@@ -112,3 +110,4 @@
 .tearoff .rc-bars{color:var(--print-ink)}
 .tearoff .muted{color:rgba(31,42,85,.7)}
 .card{border-radius:10px}
+.leaflet-face .mono,.card header .mono{color:var(--print-coral)}

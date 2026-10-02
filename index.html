@@ -137,8 +137,23 @@
         </a>
       </div>
       <div class="shelf">
-        <a href="#writing"><div><b>Writing sample</b><span>An autoethnography on queer and Black identity</span></div><i aria-hidden="true">→</i></a>
-        <a href="#resume"><div><b>Résumé</b><span>Experience, skills, education and references</span></div><i aria-hidden="true">→</i></a>
+        <a class="shelf-item shelf-leaflet" href="#writing">
+          <div class="leaflet-face">
+            <span class="mono">Leaflet enclosed · 15 pages</span>
+            <b class="shelf-title">Writing sample</b>
+            <span class="shelf-sub">An autoethnography on queer and Black identity</span>
+            <span class="mono shelf-cta">Unfold →</span>
+          </div>
+        </a>
+        <a class="shelf-item shelf-tag" href="#resume">
+          <div class="tag-face">
+            <i class="tag-hole" aria-hidden="true"></i>
+            <span class="mono">Ship to · Your hiring team</span>
+            <b class="shelf-title">Résumé</b>
+            <span class="shelf-sub">Experience, skills, education and references</span>
+            <i class="rc-bars" aria-hidden="true"></i>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -161,12 +176,34 @@
         </div>
         <div>
           <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, where I combined UX design with programming. Before Avangrid I interned twice at Optum, designing in Figma and building in React and TypeScript. Now I research, design and build the tools engineers use to keep wind and solar sites running.</p>
-          <ol class="process">
-            <li><div><h3>Listen</h3><p>Contextual inquiry and interviews with the people doing the work, at their desks and in their real tools.</p></div></li>
-            <li><div><h3>Map</h3><p>Competitive analysis, flows and wireframes so the team agrees on the problem before anything gets built.</p></div></li>
-            <li><div><h3>Make</h3><p>Designs in Figma that I take all the way to production in React, so nothing gets lost in handoff.</p></div></li>
-            <li><div><h3>Test</h3><p>Usability sessions with real users, then fixes shipped while the feedback is still fresh.</p></div></li>
-          </ol>
+          <section class="card recipe-card" aria-label="House recipe">
+            <header><span class="mono">House recipe Nº 1</span><h3>A product that makes sense</h3></header>
+            <dl class="card-meta"><div><dt>Serves</dt><dd>1 product team</dd></div><div><dt>Prep time</dt><dd>A sprint or two</dd></div></dl>
+            <div class="recipe-cols">
+              <div>
+                <h4 class="mono">Ingredients</h4>
+                <ul class="ingredients">
+                  <li><b>2 tbsp</b> user interviews</li>
+                  <li><b>1 cup</b> contextual inquiry</li>
+                  <li><b>½ cup</b> competitive analysis</li>
+                  <li><b>3</b> wireframes, roughly sketched</li>
+                  <li><b>1</b> tidy Figma file</li>
+                  <li><b>A generous pour</b> of React</li>
+                  <li><b>A pinch</b> of Chakra UI</li>
+                  <li>Usability testing, <b>to taste</b></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="mono">Method</h4>
+                <ol class="method">
+                  <li><b>Listen.</b> Interview the people doing the work, at their desks and in their real tools.</li>
+                  <li><b>Map.</b> Fold in competitive analysis, flows and wireframes until the team agrees on the problem.</li>
+                  <li><b>Make.</b> Design in Figma, then bake it all the way to production in React so nothing gets lost in handoff.</li>
+                  <li><b>Test.</b> Serve to real users. Adjust while the feedback is still warm.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -653,53 +690,40 @@
     <a class="next v-blue" href="#mew2"><div><span class="mono">Back to the start · Nº 01</span><div class="flavor">MEW2</div></div><span class="arrow" aria-hidden="true">→</span></a>
   </article>
 
-  <!-- ===================== WRITING: recipe cards ===================== -->
+  <!-- ===================== WRITING: folded leaflet ===================== -->
   <article data-view="writing" data-title="Writing Sample" hidden>
     <div class="essay">
       <a class="back-link mono" href="#top">← Home</a>
-      <span class="mono muted">From the recipe box · University of Tennessee · Spring 2021</span>
+      <span class="mono muted">Leaflet enclosed · University of Tennessee · Spring 2021</span>
       <h1>Autoethnography</h1>
-      <p class="sub">A ten-week research and writing project on my own intersecting identities, and what it taught me about writing in the first person. Flip through the cards, or lay them all out.</p>
+      <p class="sub">A ten-week research and writing project on my own intersecting identities, and what it taught me about writing in the first person.</p>
 
-      <div class="recipe-box" id="recipe-box">
-        <div class="deck" id="deck">
-          <section class="card" aria-label="Card 1: The assignment">
-            <header><span class="mono">Recipe card Nº 1</span><h2>The assignment</h2></header>
-            <dl class="card-meta"><div><dt>Prep time</dt><dd>10 weeks</dd></div><div><dt>Serves</dt><dd>1 writer</dd></div></dl>
-            <p><b>Autoethnography</b> is a form of ethnographic research in which the researcher connects personal experience to wider cultural, political and social meaning.</p>
-            <p>I expected this class to be like others: pick a topic loosely related to me and write an essay about it. Instead, the direction was to write something deeply personal, in the first person. I'd always been taught to remove myself from my writing, so I was essentially reteaching myself how to write. By the end of the course I was grateful for the chance to step that far out of my comfort zone.</p>
-          </section>
-          <section class="card" aria-label="Card 2: Background">
-            <header><span class="mono">Recipe card Nº 2</span><h2>Background</h2></header>
-            <dl class="card-meta"><div><dt>Ingredients</dt><dd>Queer · Black · Gender-nonconforming · Gen Z</dd></div></dl>
-            <p>When I was asked to write about an identity personal to me and its communities, I was stuck. Which one? Was any of it worth writing about? I chose my queer and Black identities, and how they intersected to create a sense of alienation from both, and a uniqueness I was both ashamed of and proud of.</p>
-            <p>It was heavy. I called on feelings of alienation from as early as kindergarten and traced how they rippled into who I am now and into my relationships. It wasn't pretty, but it was me, and that was what mattered most.</p>
-          </section>
-          <section class="card" aria-label="Card 3: Method">
-            <header><span class="mono">Recipe card Nº 3</span><h2>Method</h2></header>
-            <dl class="card-meta"><div><dt>Sources</dt><dd>Articles, journals, interviews, op-eds</dd></div></dl>
-            <p>Autoethnography isn't always respected as research because it's an arts-based exploration of the self. I firmly believe these stories tell us about communities, and that first-hand accounts should count as legitimate sources.</p>
-            <p>I started by defining Blackness and queerness and how they relate, which was hard because the experience of belonging to either varies depending on who you ask. I focused on how queerness isn't widely accepted in the Black community, how racism can hide inside the queer community, and how the othering both groups face doesn't always extend grace to people at that crossroads.</p>
-          </section>
-          <section class="card" aria-label="Card 4: What I found">
-            <header><span class="mono">Recipe card Nº 4</span><h2>What I found</h2></header>
-            <dl class="card-meta"><div><dt>Serving suggestion</dt><dd>Write for what the situation calls for</dd></div></dl>
-            <p>Once I started, writing it was surprisingly natural. I began like any other paper; the only difference was not taking myself out of it. Choosing which stories to tell was the real challenge.</p>
-            <p>My biggest takeaway was the beauty of combining art and research, and how writing truly changes you. It taught me to be articulate and to adapt my writing style to what a situation calls for, a skill I use every time I write up research or explain a design decision.</p>
-          </section>
-          <section class="card card-last" aria-label="Card 5: The full recipe">
-            <header><span class="mono">Recipe card Nº 5</span><h2>The full recipe</h2></header>
-            <dl class="card-meta"><div><dt>Length</dt><dd>15 pages</dd></div><div><dt>Format</dt><dd>PDF</dd></div></dl>
-            <p>Everything above is the short version. The complete autoethnography is here to read in full.</p>
-            <p><a class="btn primary" href="files/aj-hervey-autoethnography.pdf" target="_blank" rel="noopener">Read the full paper ↗</a></p>
-          </section>
-        </div>
-        <div class="deck-controls">
-          <button type="button" class="btn" id="deck-prev">← Previous</button>
-          <span class="mono" id="deck-count" aria-live="polite">Card 1 of 5</span>
-          <button type="button" class="btn" id="deck-next">Next card →</button>
-        </div>
-        <button type="button" class="deck-spread mono" id="deck-spread">Lay all cards out</button>
+      <div class="leaflet" id="leaflet">
+        <section class="fold" style="--i:0">
+          <div class="fold-head mono"><span>Please read before opening</span><span>Panel 1 of 4</span></div>
+          <h2>The assignment</h2>
+          <p class="drop">I expected this class to be like others: pick a topic loosely related to me and write an essay about it. Instead, the direction was to write something deeply personal, in the first person. I'd always been taught to remove myself from my writing, so I was essentially reteaching myself how to write. It came with a lot of feelings that I was doing it wrong, but by the end of the course I was grateful for the chance to step that far out of my comfort zone.</p>
+          <aside class="defn"><b>au·to·eth·nog·ra·phy</b> <i>(n.)</i> A form of ethnographic research in which the researcher connects personal experience to wider cultural, political and social meaning.</aside>
+        </section>
+        <section class="fold" style="--i:1">
+          <div class="fold-head mono"><span>Background</span><span>Panel 2 of 4</span></div>
+          <h2>Which story to tell</h2>
+          <p>I hold many identities. I'm queer, Black, gender-nonconforming, Gen Z and more. When I was asked to write about an identity personal to me and its communities, I was stuck. Which one? Was any of it worth writing about? I chose my queer and Black identities, and how they intersected to create a sense of alienation from both, and a uniqueness I was both ashamed of and proud of.</p>
+          <p>It was heavy, and it didn't bring up the happiest emotions. I called on feelings of alienation from as early as kindergarten and traced how they rippled into who I am now and into my relationships. It wasn't pretty, but it was me, and that was what mattered most.</p>
+        </section>
+        <section class="fold" style="--i:2">
+          <div class="fold-head mono"><span>Method</span><span>Panel 3 of 4</span></div>
+          <h2>Writing and researching</h2>
+          <p>Autoethnography isn't always respected as research because it's an arts-based exploration of the self. I firmly believe these stories tell us about communities, and that first-hand accounts should count as legitimate sources.</p>
+          <p>I started by defining Blackness and queerness and how they relate. That was hard, because the experience of belonging to either varies depending on who you ask. Peer-reviewed material was less useful here than interviews and op-eds. I focused on how queerness isn't widely accepted in the Black community, how racism can hide inside the queer community, and how the othering both groups face doesn't always extend grace to people at that crossroads.</p>
+        </section>
+        <section class="fold" style="--i:3">
+          <div class="fold-head mono"><span>Findings</span><span>Panel 4 of 4</span></div>
+          <h2>What I found</h2>
+          <p>Once I started, writing it was surprisingly natural. I began like any other paper; the only difference was not taking myself out of it. Choosing which stories to tell was the real challenge, and I had a sense of those before I began.</p>
+          <p>My biggest takeaway was the beauty of combining art and research, and how writing truly changes you. For a while afterwards I wanted to be an English major. It also taught me to be articulate and to adapt my writing style to what a situation calls for, a skill I use every time I write up research or explain a design decision.</p>
+          <div class="fold-cta"><span class="mono">The full paper · 15 pages</span><a class="btn primary" href="files/aj-hervey-autoethnography.pdf" target="_blank" rel="noopener">Read the full paper ↗</a></div>
+        </section>
       </div>
     </div>
   </article>

@@ -154,12 +154,6 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tags span{font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;border:1.5px solid currentColor;opacity:.85}
 .v-foot b{font-weight:600;white-space:nowrap}
-.shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
-.shelf a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;border-radius:24px;border:2px solid var(--ink);text-decoration:none;transition:transform .2s ease}
-.shelf a:hover{transform:translateY(-3px)}
-.shelf b{font:800 20px/1.2 var(--f-body)}
-.shelf span{display:block;color:var(--muted);font-size:15px}
-.shelf i{font-style:normal;font-size:22px}
 
 /* facts + process */
 .facts-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:56px;align-items:start}
@@ -176,12 +170,6 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .facts small{display:block;font-size:13px;line-height:1.45;padding-top:8px;color:var(--muted)}
 .facts small b{color:var(--ink)}
 .about{font-size:21px;line-height:1.5;max-width:44ch;margin-bottom:34px}
-.process{padding:0;margin:0;counter-reset:step}
-.process li{list-style:none;display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;padding-block:22px;border-bottom:1px solid var(--line)}
-.process li:first-child{padding-top:0}
-.process li::before{counter-increment:step;content:counter(step);font:400 34px/1 var(--f-display);color:var(--print-red)}
-.process h3{font:700 21px/1.3 var(--f-body);margin-bottom:4px}
-.process p{color:var(--muted);max-width:52ch}
 
 /* ---------- case study ---------- */
 .back-link{display:inline-flex;gap:8px;text-decoration:none;color:var(--muted);margin-bottom:18px}
@@ -319,39 +307,72 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .dist .utensil{width:20px;height:20px}
 .tray-fish{position:absolute;left:6px;bottom:22px;width:92px;height:54px;z-index:1;
   transform:translateX(calc((1 - var(--p)) * -120px)) rotate(-10deg);filter:drop-shadow(0 4px 4px rgba(0,0,0,.25))}
-.swimmer{position:absolute;top:-19px;left:0;width:46px;height:27px;pointer-events:none;z-index:1;will-change:transform}
+.swimmer{position:absolute;top:-19px;left:calc(var(--swim,0) * (100% - 46px));width:46px;height:27px;pointer-events:none;z-index:1;will-change:transform}
 .rc-fish{width:58px;height:34px;--fish-body:transparent;--fish-belly:transparent;--fish-fin:transparent;--fish-line:currentColor;--fish-eye:transparent;margin-bottom:2px}
 
-/* ---------- writing: recipe cards ---------- */
-.recipe-box{display:grid;gap:18px;margin-top:10px;overflow-x:clip;padding-block:4px 10px}
-.deck{display:grid;padding:0 18px 18px 0}
-.card{grid-area:1/1;background:var(--card-paper);color:var(--card-ink);border-radius:6px;padding:22px 26px 30px;
-  display:grid;gap:14px;align-content:start;box-shadow:0 18px 30px -20px rgba(18,26,43,.5),0 1px 0 rgba(0,0,0,.06);
-  transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease;transform-origin:50% 100%}
+/* ---------- recipe card (house recipe on the home page) ---------- */
+.card{background:var(--card-paper);color:var(--card-ink);border-radius:6px;padding:22px 26px 28px;display:grid;gap:14px;align-content:start;
+  box-shadow:0 18px 30px -20px rgba(18,26,43,.5),0 1px 0 rgba(0,0,0,.06)}
 .card header{display:grid;gap:4px;padding-bottom:10px;border-bottom:2px solid var(--card-margin)}
 .card header .mono{color:var(--card-margin)}
-.card h2{font:400 30px/1.05 var(--f-display);margin:0;color:var(--card-ink)}
-.card p{font-size:17px;line-height:28px;background:repeating-linear-gradient(transparent 0 27px,var(--card-rule) 27px 28px)}
-.card a{color:inherit}
-.card .btn{border-color:var(--card-ink);color:var(--card-paper);background:var(--card-ink)}
+.card h3{font:400 28px/1.05 var(--f-display);margin:0;color:var(--card-ink)}
 .card-meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0;font:500 12px/1.5 var(--f-mono);text-transform:uppercase;letter-spacing:.06em}
 .card-meta div{display:flex;gap:6px}
 .card-meta dt{opacity:.6}
 .card-meta dd{margin:0}
-/* stacked deck: cards behind sit offset and tilted; cards already read slide away */
-.deck:not(.spread) .card.behind{transform:translate(calc(var(--k) * 9px),calc(var(--k) * 9px)) rotate(calc(var(--k) * 1deg))}
-.deck:not(.spread) .card.far{opacity:0}
-.deck:not(.spread) .card.gone{transform:translateX(-115%) rotate(-12deg);opacity:0;pointer-events:none}
-.deck.spread{gap:22px;padding:0}
-.deck.spread .card{grid-area:auto}
-.deck.spread .card:nth-child(odd){transform:rotate(-.5deg)}
-.deck.spread .card:nth-child(even){transform:rotate(.5deg)}
-.deck-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.deck-controls .btn{padding:10px 16px;font-size:15px}
-.deck-controls .btn:disabled{opacity:.35;cursor:default;transform:none}
-.deck-spread{justify-self:center;background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.recipe-box.is-spread .deck-controls{display:none}
+.recipe-card{transform:rotate(.6deg)}
+.recipe-cols{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px}
+.recipe-cols h4{margin:0 0 6px;font-size:11.5px;color:var(--card-margin);font-weight:500}
+.ingredients,.method{margin:0;padding:0;list-style:none;font-size:16px;line-height:28px;
+  background:repeating-linear-gradient(transparent 0 27px,var(--card-rule) 27px 28px)}
+.ingredients b{font:italic 700 17px/28px var(--f-display);color:var(--card-margin);font-variation-settings:"SOFT" 100,"WONK" 1}
+.method{counter-reset:step}
+.method li{counter-increment:step;position:relative;padding-left:24px}
+.method li::before{content:counter(step) ".";position:absolute;left:0;top:0;font:500 13px/28px var(--f-mono);color:var(--card-margin)}
 
+/* ---------- home shelf: a folded leaflet and a shipping tag ---------- */
+.shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:40px;align-items:center}
+.shelf-item{display:block;text-decoration:none;filter:drop-shadow(0 16px 18px rgba(18,26,43,.22));transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.shelf-leaflet{transform:rotate(-1.5deg)}
+.shelf-tag{transform:rotate(1.2deg)}
+.shelf-item:hover{transform:rotate(0) translateY(-4px)}
+.shelf-title{font:400 32px/1 var(--f-display)}
+.shelf-sub{font-size:16px;line-height:1.4}
+.leaflet-face{position:relative;display:grid;gap:8px;padding:26px 30px 24px;background:var(--card-paper);color:var(--card-ink);
+  clip-path:polygon(0 0,calc(100% - 38px) 0,100% 38px,100% 100%,0 100%);
+  background-image:linear-gradient(90deg,transparent calc(50% - 1px),rgba(0,0,0,.07) 50%,rgba(255,255,255,.7) calc(50% + 1px),transparent calc(50% + 2px)),
+    linear-gradient(90deg,rgba(0,0,0,.03),transparent 50%,rgba(0,0,0,.04))}
+.leaflet-face::after{content:"";position:absolute;top:0;right:0;width:38px;height:38px;background:linear-gradient(to bottom left,transparent 50%,#E6DCC6 50%);box-shadow:-2px 2px 3px rgba(0,0,0,.12)}
+.leaflet-face .mono{color:var(--card-margin);font-size:11.5px}
+.leaflet-face .shelf-sub{color:rgba(42,42,53,.75)}
+.shelf-cta{justify-self:end;color:var(--card-ink)!important}
+.tag-face{position:relative;display:grid;gap:8px;padding:24px 28px 20px 64px;background:var(--print-butter);color:var(--print-ink);
+  clip-path:polygon(34px 0,100% 0,100% 100%,34px 100%,0 calc(100% - 34px),0 34px)}
+.tag-face .mono{font-size:11.5px;opacity:.75}
+.tag-face .rc-bars{display:block;width:60%;height:26px;color:var(--print-ink);margin-top:4px}
+.tag-hole{position:absolute;left:22px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:var(--ground);box-shadow:0 0 0 4px rgba(255,255,255,.55),inset 0 2px 3px rgba(0,0,0,.25)}
+.shelf-tag{position:relative}
+.shelf-tag::before{content:"";position:absolute;left:-26px;top:50%;width:58px;height:2px;background:var(--muted);transform:rotate(-14deg);transform-origin:right center;border-radius:2px}
+
+/* ---------- writing: a folded leaflet that unfolds ---------- */
+.leaflet{display:grid;perspective:1800px;margin-top:10px}
+.fold{position:relative;background:var(--card-paper);color:var(--card-ink);padding:28px clamp(20px,5vw,52px) 34px;display:grid;gap:16px;transform-origin:top center;box-shadow:0 22px 26px -24px rgba(18,26,43,.45)}
+.fold:first-child{border-radius:6px 6px 0 0}
+.fold:last-child{border-radius:0 0 6px 6px}
+.fold:nth-child(odd){background-image:linear-gradient(to bottom,rgba(255,255,255,.7),transparent 22%,transparent 78%,rgba(0,0,0,.05))}
+.fold:nth-child(even){background-image:linear-gradient(to bottom,rgba(0,0,0,.06),transparent 26%,transparent 82%,rgba(255,255,255,.5))}
+.fold + .fold{border-top:1px dashed rgba(42,42,53,.2)}
+.fold-head{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--card-margin);padding-bottom:8px;border-bottom:1px solid rgba(42,42,53,.12)}
+.fold h2{font:400 clamp(26px,3.6vw,36px)/1.05 var(--f-display);color:var(--card-ink);margin:0}
+.fold p{font-size:18px;line-height:1.75;max-width:64ch}
+.fold .drop::first-letter{font:400 64px/.8 var(--f-display);float:left;padding:8px 10px 0 0;color:var(--card-margin)}
+.defn{border-left:3px solid var(--card-margin);padding:4px 0 4px 16px;font-size:16px;line-height:1.55;color:rgba(42,42,53,.85)}
+.defn b{font-weight:700;letter-spacing:.02em}
+.fold-cta{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:14px;border-top:1px dashed rgba(42,42,53,.2)}
+.fold-cta .mono{color:var(--card-margin)}
+.fold .btn.primary{background:var(--card-ink);color:var(--card-paper);border-color:var(--card-ink)}
+.leaflet.unfold .fold{animation:unfold .75s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * .16s)}
+@keyframes unfold{from{transform:rotateX(-75deg);opacity:.15}to{transform:none;opacity:1}}
 /* ---------- résumé: packing slip ---------- */
 .slip{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,4vw,48px);margin-block:8px 64px;
   box-shadow:0 30px 50px -36px rgba(18,26,43,.5);position:relative}
@@ -435,13 +456,13 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
   .slip-intro{grid-template-columns:minmax(0,1fr)}
   .stamps{grid-auto-flow:column;justify-content:start}
   .slip-cols{display:none}
+  .recipe-cols{grid-template-columns:minmax(0,1fr);gap:14px}
   .role{grid-template-columns:minmax(0,1fr);gap:4px}
   .role time{order:-1}
   .lot{order:-2}
-  .card{padding:20px 18px 26px}
 }
 @media (max-width:480px){
   .glance{grid-template-columns:minmax(0,1fr)}
   .next{grid-template-columns:minmax(0,1fr)}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.leaflet.unfold .fold{animation:none}html{scroll-behavior:auto}}
