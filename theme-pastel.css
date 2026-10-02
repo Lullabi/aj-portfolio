@@ -1,0 +1,85 @@
+/* Pastel tinned-seafood packaging theme.
+   Loaded after styles.css and only overrides it: swap the palette to soft pastels with navy ink,
+   a soft wonky serif for display type, scalloped label edges and wavy dividers.
+   Remove the <link> to this file to get the classic look back. */
+:root{
+  --ground:#FBF0EC; --paper:#FFFAF5; --ink:#1F2A55; --muted:#5E6589; --line:rgba(31,42,85,.14);
+  --accent:#E2574C; --wave:rgba(31,42,85,.28);
+  --print-blue:#BCD8F0; --print-red:#F7BDB6; --print-butter:#FBE29A; --print-green:#BFE3CC; --print-lilac:#D9CEF3;
+  --print-cream:#FFFAF2; --print-ink:#1F2A55; --print-coral:#E2574C;
+  --f-display:"Fraunces","Cooper Black",Georgia,serif;
+  --shadow-tin:0 40px 70px -28px rgba(31,42,85,.45),0 14px 24px -12px rgba(31,42,85,.3);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
+  --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
+  --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}
+
+/* display type: soft, wonky, italic */
+.hero h1,.lid-name,.flavor,.sticker,.process li::before,.problem q,.back h2,.resume-head h1,.essay h1,.essay .drop::first-letter,.rc-brand{
+  font-family:var(--f-display);font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144}
+.hero h1{letter-spacing:-.02em;line-height:.95}
+.hero h1 em{color:var(--accent);font-weight:900}
+.process li::before,.essay .drop::first-letter{color:var(--accent)}
+.status b{background:#4CB884}
+
+/* brand mark + nav */
+.brand i{background:var(--print-red);box-shadow:inset 0 0 0 2px var(--print-ink),0 0 0 2px #aab3b9}
+.nav-links a[aria-current="page"]{border-bottom-color:var(--accent)}
+
+/* ---------- the tin lid ---------- */
+.lid{background:radial-gradient(circle,rgba(31,42,85,.09) 1.2px,transparent 1.6px) 0 0/14px 14px,
+  radial-gradient(120% 70% at 30% 0%,rgba(255,255,255,.4),transparent 60%),var(--print-red);
+  color:var(--print-ink);padding-top:22px}
+.lid::before{border:2px solid rgba(31,42,85,.55);box-shadow:inset 0 0 0 5px rgba(255,255,255,.35),0 0 0 4px rgba(31,42,85,.12)}
+.lid .mono{color:var(--print-ink)}
+.lid-mid > .mono{color:var(--print-ink)!important;opacity:.75!important}
+.lid-name{color:var(--print-ink);text-shadow:3px 4px 0 var(--print-cream),5px 6px 0 var(--print-coral);font-size:clamp(40px,9.6vw,62px)}
+.banner{background:var(--print-ink);color:var(--print-butter)}
+.school{color:var(--print-coral)}
+.arch{width:100%;max-width:220px;height:auto;display:block;overflow:visible;margin-top:6px}
+.arch text{font:500 12.5px var(--f-mono);letter-spacing:.12em;fill:var(--print-ink);text-transform:uppercase}
+.sparkles{position:absolute;inset:0;pointer-events:none}
+.sparkles i{position:absolute;color:var(--print-cream);font-style:normal;font-size:18px;line-height:1}
+.roll{background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(255,255,255,.55) 44%,rgba(255,255,255,0) 58%,rgba(0,0,0,.4)),var(--print-red)}
+.sticker{background:var(--print-butter);color:var(--print-ink);border-color:rgba(31,42,85,.5);outline-color:var(--print-butter);font-size:16px}
+
+/* ---------- scalloped labels ---------- */
+.variety,.case-hero,.next{
+  -webkit-mask:radial-gradient(circle 7px at 50% 0,transparent 96%,#000) top/20px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/20px 51% repeat-x;
+          mask:radial-gradient(circle 7px at 50% 0,transparent 96%,#000) top/20px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/20px 51% repeat-x;
+  border-radius:22px}
+.variety:hover{box-shadow:none}
+.variety::before,.case-hero::before,.next::before{border-style:dashed;opacity:.35;inset:16px 12px}
+.v-red,.v-blue,.v-green,.v-butter{color:var(--print-ink)}
+.v-red{background:var(--print-red)}
+.v-blue{background:var(--print-blue)}
+.v-green{background:var(--print-green)}
+.v-butter{background:var(--print-butter)}
+.v-ink{background:var(--print-lilac);color:var(--print-ink)}
+.v-red .flavor,.v-green .flavor,.v-ink .flavor{color:var(--print-ink)}
+.v-blue .flavor,.v-butter .flavor{color:var(--print-coral)}
+.flavor{text-shadow:none!important}
+.case-hero .flavor{text-shadow:3px 4px 0 var(--print-cream)!important}
+.thumb{box-shadow:0 10px 24px -14px rgba(31,42,85,.6)}
+
+/* wavy dividers instead of hairlines */
+.home-sec,.back-sec,footer{border-top:0;position:relative}
+.home-sec::before,.back-sec::before,footer::before{content:"";position:absolute;top:-6px;left:0;right:0;height:12px;background:var(--wave);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M0 6 Q7 0 14 6 T28 6' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") left center/28px 12px repeat-x;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M0 6 Q7 0 14 6 T28 6' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") left center/28px 12px repeat-x}
+
+/* case study accents */
+.problem{background:var(--print-lilac)}
+.problem .mono{color:var(--print-coral)}
+.prose li::marker,.role li::marker{color:var(--accent)}
+.toc button.on{border-left-color:var(--accent)}
+.pull{border-left-color:var(--accent)}
+.features > div{border-top:3px dotted var(--ink)}
+.glance{border-radius:18px;overflow:hidden}
+.facts{border-radius:6px}
+.shelf a{border-style:dashed;border-radius:999px}
+.btn{border-radius:999px}
+.slot{background:linear-gradient(#3a4470,#1F2A55)}
