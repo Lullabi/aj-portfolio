@@ -22,5 +22,6 @@ head = re.sub(r'<meta (charset|name="viewport")[^>]*>\s*', "", head)
 
 for name in ("styles.css", "app.js"):
     shutil.copy2(root / name, out / name)
-shutil.copytree(root / "img", out / "img", dirs_exist_ok=True)
+for folder in ("img", "files"):
+    shutil.copytree(root / folder, out / folder, dirs_exist_ok=True)
 print("built", out)

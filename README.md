@@ -3,7 +3,8 @@
 Personal UX portfolio site. Open `index.html` in a browser.
 
 - `img/` optimized images used by the site
-- `source-images/` original screenshots from Notion
+- `files/` résumé and writing sample PDFs
+- `source-images/` original project screenshots
 
 ## How it works
 
