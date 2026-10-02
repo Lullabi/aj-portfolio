@@ -139,6 +139,19 @@
     secs.forEach(s => tocObserver.observe(s));
   }
 
+  /* ---------- takeaway receipts print out when scrolled into view ---------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const printers = document.querySelectorAll('.printer');
+    const printObserver = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.classList.replace('pending', 'printed');
+        printObserver.unobserve(en.target);
+      });
+    }, { threshold: .15 });
+    printers.forEach(pr => { pr.classList.add('pending'); printObserver.observe(pr); });
+  }
+
   /* ---------- screenshot lightbox ---------- */
   const box = document.getElementById('lightbox');
   const boxImg = box.querySelector('img'), boxCap = box.querySelector('p');

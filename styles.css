@@ -233,6 +233,36 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .next .flavor{font-size:clamp(40px,6vw,64px);line-height:1}
 .next .arrow{font-size:34px}
 
+/* ---------- takeaways receipt ---------- */
+.takeaway{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:48px;align-items:start}
+.printer{--paper-roll:#FFFEF8;--paper-ink:#232220;position:relative;padding-inline:10px}
+.slot{height:16px;border-radius:999px;background:linear-gradient(#2a2f3a,#0e1118);box-shadow:inset 0 3px 4px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.25);margin-inline:-10px;position:relative;z-index:2}
+.receipt-clip{overflow:hidden;margin-top:-8px;padding:0 12px 28px;margin-inline:-12px}
+.receipt-wrap{filter:drop-shadow(0 14px 18px rgba(18,26,43,.28));transform:rotate(-.6deg);transform-origin:top center}
+.printer.pending .receipt-wrap{transform:translateY(-101%)}
+.printer.printed .receipt-wrap{transform:rotate(-.6deg);transition:transform 1.8s steps(22,end)}
+.receipt{background:var(--paper-roll);color:var(--paper-ink);font:400 13px/1.5 var(--f-mono);padding:30px 22px 40px;display:grid;gap:14px;
+  -webkit-mask:radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/16px 100% repeat-x;
+          mask:radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/16px 100% repeat-x;
+  background-image:linear-gradient(rgba(0,0,0,.025) 1px,transparent 1px);background-size:100% 3px}
+.rc-head{display:grid;justify-items:center;text-align:center;gap:2px;text-transform:uppercase;letter-spacing:.08em;font-size:11.5px}
+.rc-brand{font:400 24px/1.1 var(--f-display);letter-spacing:0;text-transform:none;margin-bottom:4px}
+.rc-meta{display:grid;grid-template-columns:auto 1fr;gap:0 14px;padding-block:10px;border-block:1.5px dashed currentColor;text-transform:uppercase;font-size:11.5px}
+.rc-meta span:nth-child(even){text-align:right}
+.rc-items{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.rc-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;text-transform:uppercase;font-weight:500}
+.rc-line > span:first-child{min-width:0}
+.rc-line > span:last-child{white-space:nowrap}
+.rc-note{display:block;font-size:12px;line-height:1.4;opacity:.7;padding-left:12px;text-transform:none}
+.rc-sub{text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;text-align:center;padding-top:6px;border-top:1.5px dashed currentColor}
+.rc-sub::before,.rc-sub::after{content:" * "}
+.rc-total{border-top:3px double currentColor;padding-top:10px}
+.rc-total .rc-line{font-size:17px;font-weight:500}
+.rc-foot{display:grid;justify-items:center;text-align:center;gap:4px;text-transform:uppercase;font-size:11px;letter-spacing:.08em;border-top:1.5px dashed currentColor;padding-top:12px}
+.rc-foot span:first-child{text-transform:none;letter-spacing:0;font-size:12px;opacity:.75}
+.rc-bars{display:block;width:78%;height:38px;margin-block:6px 0;background:
+  repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 4px,currentColor 4px 5px,transparent 5px 8px,currentColor 8px 11px,transparent 11px 12px,currentColor 12px 13px,transparent 13px 17px)}
+
 /* ---------- résumé ---------- */
 .resume-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding-block:24px 36px;border-bottom:3px solid var(--ink)}
 .resume-head h1{font:400 clamp(48px,8vw,96px)/.92 var(--f-display)}
@@ -300,6 +330,8 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
   .toc{display:none}
   .glance{grid-template-columns:repeat(2,minmax(0,1fr))}
   .resume-grid{grid-template-columns:minmax(0,1fr);gap:44px}
+  .takeaway{grid-template-columns:minmax(0,1fr);gap:32px}
+  .printer{max-width:400px;width:100%;justify-self:center}
 }
 @media (max-width:860px){
   .hero{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:16px 72px}
