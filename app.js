@@ -43,15 +43,19 @@
   addEventListener('hashchange', route);
 
   /* ---------- the tin ---------- */
-  const tin = document.getElementById('tin'), key = document.getElementById('key'), lid = document.getElementById('lid');
+  const tin = document.getElementById('tin'), lid = document.getElementById('lid');
+  // two handles: the classic side key (drag up to open) and the pastel pull tab (drag down to open)
+  const handles = [{ el: document.getElementById('key'), dir: 1 }, { el: document.getElementById('pull-ring'), dir: -1 }];
   const toggle = document.getElementById('toggle'), stage = document.getElementById('stage');
   let p = 0, anim = null, introduced = false;
 
   function set(v) {
     p = Math.max(0, Math.min(1, v));
     tin.style.setProperty('--p', p.toFixed(4));
-    key.setAttribute('aria-valuenow', Math.round(p * 100));
-    key.setAttribute('aria-valuetext', p > .97 ? 'Open' : p < .03 ? 'Closed' : Math.round(p * 100) + '% open');
+    handles.forEach(({ el }) => {
+      el.setAttribute('aria-valuenow', Math.round(p * 100));
+      el.setAttribute('aria-valuetext', p > .97 ? 'Open' : p < .03 ? 'Closed' : Math.round(p * 100) + '% open');
+    });
     toggle.textContent = p > .5 ? 'Close the tin' : 'Open the tin';
   }
   function animateTo(target, ms = 1500) {
@@ -74,24 +78,26 @@
   }
 
   let drag = null;
-  key.addEventListener('pointerdown', e => {
-    cancelAnimationFrame(anim);
-    drag = { y: e.clientY, p, h: lid.getBoundingClientRect().height };
-    key.setPointerCapture(e.pointerId);
-  });
-  key.addEventListener('pointermove', e => { if (drag) set(drag.p + (drag.y - e.clientY) / drag.h); });
   const end = () => { if (!drag) return; drag = null; if (p > .88) animateTo(1, 300); else if (p < .08) animateTo(0, 300); };
-  key.addEventListener('pointerup', end);
-  key.addEventListener('pointercancel', end);
-  key.addEventListener('keydown', e => {
-    const k = e.key;
-    if (k === 'ArrowUp' || k === 'ArrowRight') set(p + .1);
-    else if (k === 'ArrowDown' || k === 'ArrowLeft') set(p - .1);
-    else if (k === 'Home') set(0);
-    else if (k === 'End') set(1);
-    else if (k === 'Enter' || k === ' ') animateTo(p > .5 ? 0 : 1, 900);
-    else return;
-    e.preventDefault();
+  handles.forEach(({ el, dir }) => {
+    el.addEventListener('pointerdown', e => {
+      cancelAnimationFrame(anim);
+      drag = { y: e.clientY, p, h: lid.getBoundingClientRect().height, dir };
+      el.setPointerCapture(e.pointerId);
+    });
+    el.addEventListener('pointermove', e => { if (drag) set(drag.p + drag.dir * (drag.y - e.clientY) / drag.h); });
+    el.addEventListener('pointerup', end);
+    el.addEventListener('pointercancel', end);
+    el.addEventListener('keydown', e => {
+      const k = e.key;
+      if (k === 'ArrowUp' || k === 'ArrowRight') set(p + .1);
+      else if (k === 'ArrowDown' || k === 'ArrowLeft') set(p - .1);
+      else if (k === 'Home') set(0);
+      else if (k === 'End') set(1);
+      else if (k === 'Enter' || k === ' ') animateTo(p > .5 ? 0 : 1, 900);
+      else return;
+      e.preventDefault();
+    });
   });
   toggle.addEventListener('click', () => animateTo(p > .5 ? 0 : 1, 1100));
   lid.addEventListener('click', () => { if (p < .5) animateTo(1, 1100); });

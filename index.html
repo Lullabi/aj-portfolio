@@ -51,6 +51,7 @@
             <div class="lid-wrap">
               <div class="lid-clip">
                 <div class="lid" id="lid" aria-hidden="true">
+                  <i class="emboss" aria-hidden="true"></i>
                   <div class="sparkles"><i style="top:18%;left:12%">✦</i><i style="top:30%;right:12%;font-size:13px">✦</i><i style="top:66%;left:14%;font-size:12px">✦</i><i style="top:70%;right:15%">✦</i></div>
                   <span class="mono est">Est. 2019 · Knoxville, TN</span>
                   <svg class="arch" viewBox="0 0 260 46" aria-hidden="true"><path id="lid-arc" d="M14 42 A270 270 0 0 1 246 42" fill="none"/><text><textPath href="#lid-arc" startOffset="50%" text-anchor="middle">Est. 2019 · Knoxville, TN</textPath></text></svg>
@@ -71,11 +72,14 @@
                 <div class="key" id="key" role="slider" tabindex="0" aria-label="Tin lid" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Closed">
                   <span class="stem"></span><span class="ring"></span>
                 </div>
+                <div class="pull-ring" id="pull-ring" role="slider" tabindex="0" aria-label="Tin lid pull tab" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Closed">
+                  <svg viewBox="0 0 70 90" aria-hidden="true"><defs><linearGradient id="tab-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset=".45" stop-color="#aab2b8"/><stop offset=".7" stop-color="#e9edef"/><stop offset="1" stop-color="#8a939a"/></linearGradient></defs><path fill-rule="evenodd" fill="url(#tab-metal)" stroke="#7d868c" d="M35 2C52 2 64 12 64 28c0 12-4 18-4 30 0 18-10 30-25 30S10 76 10 58c0-12-4-18-4-30C6 12 18 2 35 2zm0 38c-11 0-17 8-17 20s7 19 17 19 17-7 17-19-6-20-17-20z"/><circle cx="35" cy="20" r="9" fill="url(#tab-metal)" stroke="#7d868c"/><circle cx="35" cy="20" r="3.5" fill="#c3c9cd"/></svg>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <p class="hint mono">Drag the key to open · <button type="button" id="toggle">Open the tin</button></p>
+        <p class="hint mono"><span class="hint-key">Drag the key to open</span><span class="hint-tab">Pull the tab to open</span> · <button type="button" id="toggle">Open the tin</button></p>
       </div>
     </header>
 
