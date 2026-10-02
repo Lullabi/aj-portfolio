@@ -12,7 +12,8 @@
     // If the site is served from a project folder, list that folder name here.
     var projectFolders = ['portfolio', 'aj-portfolio'];
     var seg = location.pathname.split('/')[1];
-    var base = projectFolders.indexOf(seg) !== -1 ? '/' + seg + '/' : '/';
+    var onGithubIo = /\.github\.io$/.test(location.hostname);
+    var base = onGithubIo && projectFolders.indexOf(seg) !== -1 ? '/' + seg + '/' : '/';
     location.replace(base + '#empty');
   })();
 </script>
