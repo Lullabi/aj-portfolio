@@ -52,9 +52,21 @@
     if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
   }
   addEventListener('hashchange', route);
+  // Clicking a link to the hash you're already on doesn't fire hashchange, so route it directly
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const target = a.getAttribute('href');
+    if (target.length > 1 && target === location.hash) {
+      e.preventDefault();
+      current = null;
+      route();
+    }
+  });
 
   // skip link: jump focus to the content without changing the page
-  document.querySelector('.skip').addEventListener('click', e => {
+  const skip = document.querySelector('.skip');
+  if (skip) skip.addEventListener('click', e => {
     e.preventDefault();
     const m = document.getElementById('main');
     m.focus();
@@ -64,7 +76,7 @@
   /* ---------- the tin ---------- */
   const tin = document.getElementById('tin'), lid = document.getElementById('lid');
   // two handles: the classic side key (drag up to open) and the pastel pull tab (drag down to open)
-  const handles = [{ el: document.getElementById('key'), dir: 1 }, { el: document.getElementById('pull-ring'), dir: -1 }];
+  const handles = [{ el: document.getElementById('key'), dir: 1 }, { el: document.getElementById('pull-ring'), dir: -1 }].filter(h => h.el);
   const toggle = document.getElementById('toggle'), stage = document.getElementById('stage');
   let p = 0, anim = null, introduced = false;
 

@@ -15,3 +15,4 @@ Everything lives in `index.html` as separate views (home, four case studies, wri
 - `styles.css` design tokens and all styling
 - `app.js` routing, the tin animation, contents sidebar, screenshot lightbox
 - `tools/build_artifact.py` makes a copy for publishing as a Claude artifact
+- `tools/stamp_assets.py` run before each release so browsers fetch the matching CSS/JS
