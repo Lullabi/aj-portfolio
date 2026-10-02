@@ -3,9 +3,9 @@
 
   /* ---------- routing: each page is a [data-view] block, picked by the URL hash ---------- */
   const views = [...document.querySelectorAll('[data-view]')];
-  const titles = { home: 'Aj Hervey · Product Designer' };
-  views.forEach(v => { if (v.dataset.title) titles[v.dataset.view] = v.dataset.title + ' · Aj Hervey'; });
-  const homeAnchors = ['top', 'work', 'about'];
+  const titles = { home: 'Aaron Hervey · Product Designer' };
+  views.forEach(v => { if (v.dataset.title) titles[v.dataset.view] = v.dataset.title + ' · Aaron Hervey'; });
+  const homeAnchors = ['top', 'home', 'work', 'about', 'editions'];
   let current = null;
 
   function show(name) {
@@ -41,11 +41,25 @@
       window.scrollTo(0, 0);
       return;
     }
+    if (!homeAnchors.includes(h)) {
+      // a link to something that doesn't exist gets the empty tin
+      show('empty');
+      window.scrollTo(0, 0);
+      return;
+    }
     show('home');
-    const el = homeAnchors.includes(h) && h !== 'top' ? document.getElementById(h) : null;
+    const el = h !== 'top' ? document.getElementById(h) : null;
     if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
   }
   addEventListener('hashchange', route);
+
+  // skip link: jump focus to the content without changing the page
+  document.querySelector('.skip').addEventListener('click', e => {
+    e.preventDefault();
+    const m = document.getElementById('main');
+    m.focus();
+    m.scrollIntoView();
+  });
 
   /* ---------- the tin ---------- */
   const tin = document.getElementById('tin'), lid = document.getElementById('lid');
@@ -261,6 +275,22 @@
     b.style.width = (1 + (seed % 3)) + 'px';
     b.style.marginRight = (1 + (seed % 2) * 2) + 'px';
     bars.appendChild(b);
+  }
+
+  /* ---------- privacy-friendly visit counts (GoatCounter: no cookies, no personal data) ---------- */
+  const gcCode = (document.querySelector('meta[name="goatcounter"]') || {}).content;
+  const isLive = !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && !location.hostname.endsWith('claude.ai') && !location.hostname.endsWith('claudeusercontent.com');
+  if (gcCode && isLive) {
+    window.goatcounter = { no_onload: true };
+    const gc = document.createElement('script');
+    gc.async = true;
+    gc.src = '//gc.zgo.at/count.js';
+    gc.dataset.goatcounter = `https://${gcCode}.goatcounter.com/count`;
+    const countView = () => window.goatcounter && window.goatcounter.count &&
+      window.goatcounter.count({ path: location.pathname + (location.hash || '#top'), title: document.title });
+    gc.addEventListener('load', countView);
+    document.head.appendChild(gc);
+    addEventListener('hashchange', () => setTimeout(countView, 50));
   }
 
   route();

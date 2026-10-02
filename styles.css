@@ -5,7 +5,7 @@
   --ground:#E6ECF0; --paper:#F7F9FA; --ink:#121A2B; --muted:#56617A; --line:rgba(18,26,43,.14);
   --accent:#2340C8;
   /* print colours live on their own surfaces, so they stay fixed in both themes */
-  --print-blue:#1F37B5; --print-red:#D63B24; --print-butter:#F5C842; --print-cream:#FFF6DC; --print-ink:#121A2B; --print-green:#17694F;
+  --print-blue:#1F37B5; --print-red:#B3301C; --print-butter:#F5C842; --print-cream:#FFF6DC; --print-ink:#121A2B; --print-green:#17694F;
   --f-display:"Shrikhand","Cooper Black",Georgia,serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"DM Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
@@ -14,7 +14,7 @@
   /* mascot fish */
   --fish-body:var(--print-red); --fish-belly:var(--print-cream); --fish-fin:var(--print-butter); --fish-line:var(--print-ink);
   /* paper objects (recipe cards, packing slip stamps) */
-  --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#E58A7E; --stamp:#C8452F;
+  --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#C0452F; --stamp:#C8452F;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#0C1221; --paper:#141C2F; --ink:#E8ECF4; --muted:#9BA6BF; --line:rgba(232,236,244,.14);
@@ -28,7 +28,10 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--f-body);padding-inline:20px;-webkit-font-smoothing:antialiased}
-img{max-width:100%}
+img{max-width:100%;height:auto}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 12px)}
+main:focus{outline:none}
 [hidden]{display:none!important}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
@@ -204,7 +207,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips span{font:500 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-radius:999px;border:1.5px solid var(--ink)}
 .problem{background:var(--print-butter);color:var(--print-ink);border-radius:28px;padding:clamp(24px,4vw,40px);display:grid;gap:16px}
-.problem .mono{color:var(--print-red)}
+.problem .mono{color:var(--print-ink)}
 .problem q{font:400 clamp(26px,3.6vw,40px)/1.1 var(--f-display);quotes:none}
 .problem p{max-width:62ch}
 .insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px;padding:0;list-style:none}
@@ -318,7 +321,7 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .card h3{font:400 28px/1.05 var(--f-display);margin:0;color:var(--card-ink)}
 .card-meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0;font:500 12px/1.5 var(--f-mono);text-transform:uppercase;letter-spacing:.06em}
 .card-meta div{display:flex;gap:6px}
-.card-meta dt{opacity:.6}
+.card-meta dt{opacity:.75}
 .card-meta dd{margin:0}
 .recipe-card{transform:rotate(.6deg)}
 .recipe-cols{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px}
@@ -410,6 +413,43 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .tear-here{color:var(--accent)}
 .slip-foot{text-align:center;padding-top:28px;margin-top:28px;border-top:1px dashed var(--line);font-size:11.5px}
 
+/* ---------- case study recipe cards ---------- */
+.case-recipe{max-width:760px;margin-top:8px;transform:rotate(-.4deg)}
+
+/* ---------- limited editions: sealed mini tins ---------- */
+.editions-intro{color:var(--muted);font-size:18px;margin:-18px 0 30px}
+.editions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.mini-tin{position:relative;display:block;aspect-ratio:4/3;border-radius:34px;padding:10px;text-decoration:none;
+  background:linear-gradient(135deg,#f6f8f9 0%,#aab2b8 18%,#eef1f3 36%,#8a949b 55%,#e3e7ea 74%,#98a1a7 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),inset 0 -2px 0 rgba(0,0,0,.2),0 22px 30px -20px rgba(18,26,43,.5);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.mini-tin:nth-child(1){transform:rotate(-2deg)}
+.mini-tin:nth-child(2){transform:rotate(1.5deg)}
+.mini-tin:hover{transform:rotate(0) translateY(-4px)}
+.mini-lid{height:100%;border-radius:26px;display:grid;align-content:center;justify-items:center;gap:4px;text-align:center;padding:16px;color:var(--print-ink);
+  box-shadow:inset 0 0 0 2px rgba(18,26,43,.25),inset 0 0 0 7px rgba(255,255,255,.35)}
+.mini-lid b{font:400 clamp(26px,3vw,34px)/1 var(--f-display)}
+.mini-lid .mono{font-size:10.5px;opacity:.7}
+.mini-sub{font-size:14px;opacity:.8}
+.t-pink .mini-lid{background:var(--print-red);color:var(--print-cream)}
+.t-mint .mini-lid{background:var(--print-green);color:var(--print-cream)}
+.t-open{background:none;box-shadow:none;border:2.5px dashed var(--line);padding:8px}
+.t-open .mini-lid{box-shadow:none;color:var(--ink)}
+.t-open .mini-sub{color:var(--accent);opacity:1;font-weight:600}
+.seal{position:absolute;right:-8px;top:14px;background:var(--print-butter);color:var(--print-ink);padding:6px 10px;font-size:10.5px;border-radius:4px;transform:rotate(8deg);box-shadow:0 4px 8px -4px rgba(0,0,0,.4)}
+
+/* ---------- empty tin (broken links) ---------- */
+.empty{display:grid;justify-items:center;text-align:center;gap:14px;padding-block:40px 80px;max-width:560px;margin-inline:auto}
+.empty h1{font:400 clamp(40px,7vw,72px)/1 var(--f-display)}
+.empty p{color:var(--muted);font-size:18px}
+.empty .ctas{justify-content:center}
+.empty-tin{width:min(100%,340px);aspect-ratio:16/10;border-radius:50px;padding:14px;margin-bottom:12px;
+  background:linear-gradient(135deg,#f6f8f9 0%,#aab2b8 18%,#eef1f3 36%,#8a949b 55%,#e3e7ea 74%,#98a1a7 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),var(--shadow-tin);transform:rotate(-3deg)}
+.empty-tray{position:relative;height:100%;border-radius:38px;background:radial-gradient(120% 80% at 50% 0%,#eef1f2,#b8c0c5);box-shadow:inset 0 8px 16px rgba(0,0,0,.35);display:grid;place-items:center}
+.bones{width:70%;stroke:#6b747b;stroke-width:3.2}
+.bones .eye{fill:#6b747b;stroke:none}
+.crumb{position:absolute;width:6px;height:4px;border-radius:2px;background:#9aa2a8}
+
 /* ---------- Figma prototypes: a poster that swaps in the live embed on request ---------- */
 .figma-frame{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow-shot)}
 .figma-poster{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:10px;text-align:center;padding:24px;
@@ -431,7 +471,7 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .links a{display:flex;justify-content:space-between;padding-block:14px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
 .links a span{transition:transform .2s ease;color:var(--muted)}
 .links a:hover span{transform:translateX(4px)}
-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-block:40px 48px;border-top:1px solid var(--line);color:var(--muted)}
+.fine-print{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-block:40px 48px;border-top:1px solid var(--line);color:var(--muted)}
 .barcode{display:grid;gap:4px;justify-items:center}
 .bars{display:flex;height:44px;background:var(--paper);padding:6px 10px;border-radius:4px}
 .bars i{display:block;background:var(--ink)}
@@ -468,6 +508,7 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
   .stamps{grid-auto-flow:column;justify-content:start}
   .slip-cols{display:none}
   .recipe-cols{grid-template-columns:minmax(0,1fr);gap:14px}
+  .editions{grid-template-columns:minmax(0,1fr);gap:22px;max-width:340px;margin-inline:auto}
   .role{grid-template-columns:minmax(0,1fr);gap:4px}
   .role time{order:-1}
   .lot{order:-2}

@@ -20,7 +20,7 @@ body = re.search(r"<body>(.*?)</body>", html, re.S).group(1)
 head = re.sub(r'<meta (charset|name="viewport")[^>]*>\s*', "", head)
 (out / "index.html").write_text(head.strip() + "\n" + body.strip() + "\n", encoding="utf-8")
 
-for f in list(root.glob("*.css")) + list(root.glob("*.js")):
+for f in [p for ext in ("css", "js", "svg", "png") for p in root.glob("*." + ext)]:
     shutil.copy2(f, out / f.name)
 for folder in ("img", "files"):
     shutil.copytree(root / folder, out / folder, dirs_exist_ok=True)

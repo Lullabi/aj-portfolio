@@ -81,20 +81,19 @@
 .v-butter{background:var(--print-butter)}
 .v-ink{background:var(--print-lilac);color:var(--print-ink)}
 .v-red .flavor,.v-green .flavor,.v-ink .flavor{color:var(--print-ink)}
-.v-blue .flavor,.v-butter .flavor{color:var(--print-coral)}
+.v-blue .flavor,.v-butter .flavor{color:#B23A2B}
 .flavor{text-shadow:none!important}
 .case-hero .flavor{text-shadow:3px 4px 0 var(--print-cream)!important}
 .thumb{box-shadow:0 10px 24px -14px rgba(31,42,85,.6)}
 
 /* wavy dividers instead of hairlines */
-.home-sec,.back-sec,footer{border-top:0;position:relative}
-.home-sec::before,.back-sec::before,footer::before{content:"";position:absolute;top:-6px;left:0;right:0;height:12px;background:var(--wave);
+.home-sec,.back-sec,.fine-print{border-top:0;position:relative}
+.home-sec::before,.back-sec::before,.fine-print::before{content:"";position:absolute;top:-6px;left:0;right:0;height:12px;background:var(--wave);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M0 6 Q7 0 14 6 T28 6' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") left center/28px 12px repeat-x;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M0 6 Q7 0 14 6 T28 6' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") left center/28px 12px repeat-x}
 
 /* case study accents */
 .problem{background:var(--print-lilac)}
-.problem .mono{color:var(--print-coral)}
 .prose li::marker,.role li::marker{color:var(--accent)}
 .toc button.on{border-left-color:var(--accent)}
 .pull{border-left-color:var(--accent)}
@@ -110,4 +109,7 @@
 .tearoff .rc-bars{color:var(--print-ink)}
 .tearoff .muted{color:rgba(31,42,85,.7)}
 .card{border-radius:10px}
-.leaflet-face .mono,.card header .mono{color:var(--print-coral)}
+
+
+.t-pink .mini-lid,.t-mint .mini-lid{color:var(--print-ink)}
+.seal{background:var(--print-lilac)}
