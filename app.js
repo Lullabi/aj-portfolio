@@ -179,6 +179,83 @@
     printers.forEach(pr => { pr.classList.add('pending'); printObserver.observe(pr); });
   }
 
+  /* ---------- writing sample: a deck of recipe cards ---------- */
+  const deck = document.getElementById('deck');
+  if (deck) {
+    const box = document.getElementById('recipe-box');
+    const cards = [...deck.querySelectorAll('.card')];
+    const prev = document.getElementById('deck-prev'), next = document.getElementById('deck-next');
+    const count = document.getElementById('deck-count'), spreadBtn = document.getElementById('deck-spread');
+    let at = 0;
+    const show = i => {
+      at = Math.max(0, Math.min(cards.length - 1, i));
+      const spread = deck.classList.contains('spread');
+      cards.forEach((c, j) => {
+        const k = j - at;
+        c.classList.toggle('gone', k < 0);
+        c.classList.toggle('behind', k > 0);
+        c.classList.toggle('far', k > 2);
+        c.style.setProperty('--k', Math.min(Math.max(k, 0), 2));
+        c.style.zIndex = String(cards.length - Math.abs(k));
+        c.inert = !spread && k !== 0;
+      });
+      prev.disabled = at === 0;
+      next.disabled = at === cards.length - 1;
+      count.textContent = `Card ${at + 1} of ${cards.length}`;
+    };
+    prev.addEventListener('click', () => show(at - 1));
+    next.addEventListener('click', () => show(at + 1));
+    box.addEventListener('keydown', e => {
+      if (deck.classList.contains('spread')) return;
+      if (e.key === 'ArrowRight') { show(at + 1); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { show(at - 1); e.preventDefault(); }
+    });
+    let swipeX = null;
+    deck.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') swipeX = e.clientX; });
+    deck.addEventListener('pointerup', e => {
+      if (swipeX === null) return;
+      const dx = e.clientX - swipeX; swipeX = null;
+      if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+    });
+    spreadBtn.addEventListener('click', () => {
+      const spread = deck.classList.toggle('spread');
+      box.classList.toggle('is-spread', spread);
+      spreadBtn.textContent = spread ? 'Stack the cards' : 'Lay all cards out';
+      show(spread ? 0 : at);
+    });
+    show(0);
+  }
+
+  /* ---------- the mascot fish swims along each section divider as you scroll ---------- */
+  const swimmers = [...document.querySelectorAll('.home-sec, .back-sec')].map((sec, i) => {
+    const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'swimmer');
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = '<use href="#fish"/>';
+    sec.prepend(s);
+    return { sec, s, flip: i % 2 === 1 };
+  });
+  function swim() {
+    swimmers.forEach(({ sec, s, flip }) => {
+      if (!sec.offsetParent) return;
+      const r = sec.getBoundingClientRect();
+      const t = reduce ? .12 : Math.max(0, Math.min(1, 1 - r.top / innerHeight));
+      const travel = Math.max(0, r.width - 46);
+      const x = (flip ? 1 - t : t) * travel;
+      const bob = reduce ? 0 : Math.sin(t * 18) * 3;
+      s.style.transform = `translate(${x}px, ${bob}px) scaleX(${flip ? -1 : 1})`;
+    });
+  }
+  let swimQueued = false;
+  addEventListener('scroll', () => {
+    if (swimQueued) return;
+    swimQueued = true;
+    requestAnimationFrame(() => { swimQueued = false; swim(); });
+  }, { passive: true });
+  addEventListener('resize', swim);
+  addEventListener('hashchange', () => requestAnimationFrame(swim));
+  swim();
+
   /* ---------- screenshot lightbox ---------- */
   const box = document.getElementById('lightbox');
   const boxImg = box.querySelector('img'), boxCap = box.querySelector('p');
