@@ -113,3 +113,4 @@
 
 .t-pink .mini-lid,.t-mint .mini-lid{color:var(--print-ink)}
 .seal{background:var(--print-lilac)}
+:root{--shelf:#B9A6E4;--shelf-top:#DCD0F7}

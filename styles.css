@@ -14,7 +14,7 @@
   /* mascot fish */
   --fish-body:var(--print-red); --fish-belly:var(--print-cream); --fish-fin:var(--print-butter); --fish-line:var(--print-ink);
   /* paper objects (recipe cards, packing slip stamps) */
-  --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#C0452F; --stamp:#C8452F;
+  --shelf:#B98E62; --shelf-top:#D7B48B; --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#C0452F; --stamp:#C8452F;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#0C1221; --paper:#141C2F; --ink:#E8ECF4; --muted:#9BA6BF; --line:rgba(232,236,244,.14);
@@ -418,13 +418,16 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 
 /* ---------- limited editions: sealed mini tins ---------- */
 .editions-intro{color:var(--muted);font-size:18px;margin:-18px 0 30px}
-.editions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.editions{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:end;padding-bottom:22px}
+/* the shelf the tins stand on */
+.editions::after{content:"";position:absolute;left:-14px;right:-14px;bottom:0;height:20px;border-radius:5px;background:linear-gradient(var(--shelf-top),var(--shelf));
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 16px 18px -10px rgba(18,26,43,.4)}
 .mini-tin{position:relative;display:block;aspect-ratio:4/3;border-radius:34px;padding:10px;text-decoration:none;
   background:linear-gradient(135deg,#f6f8f9 0%,#aab2b8 18%,#eef1f3 36%,#8a949b 55%,#e3e7ea 74%,#98a1a7 100%);
   box-shadow:inset 0 2px 0 rgba(255,255,255,.85),inset 0 -2px 0 rgba(0,0,0,.2),0 22px 30px -20px rgba(18,26,43,.5);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.mini-tin:nth-child(1){transform:rotate(-2deg)}
-.mini-tin:nth-child(2){transform:rotate(1.5deg)}
-.mini-tin:hover{transform:rotate(0) translateY(-4px)}
+.mini-tin:nth-child(1){transform:rotate(-1deg)}
+.mini-tin:nth-child(2){transform:rotate(.8deg)}
+.mini-tin:hover{transform:rotate(0) translateY(-8px)}
 .mini-lid{height:100%;border-radius:26px;display:grid;align-content:center;justify-items:center;gap:4px;text-align:center;padding:16px;color:var(--print-ink);
   box-shadow:inset 0 0 0 2px rgba(18,26,43,.25),inset 0 0 0 7px rgba(255,255,255,.35)}
 .mini-lid b{font:400 clamp(26px,3vw,34px)/1 var(--f-display)}
@@ -508,7 +511,9 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
   .stamps{grid-auto-flow:column;justify-content:start}
   .slip-cols{display:none}
   .recipe-cols{grid-template-columns:minmax(0,1fr);gap:14px}
-  .editions{grid-template-columns:minmax(0,1fr);gap:22px;max-width:340px;margin-inline:auto}
+  .editions{grid-template-columns:minmax(0,1fr);gap:44px;max-width:300px;margin-inline:auto;padding-bottom:0}
+  .editions::after{display:none}
+  .mini-tin::after{content:"";position:absolute;left:-18px;right:-18px;bottom:-22px;height:16px;border-radius:5px;background:linear-gradient(var(--shelf-top),var(--shelf));box-shadow:0 12px 14px -8px rgba(18,26,43,.4)}
   .role{grid-template-columns:minmax(0,1fr);gap:4px}
   .role time{order:-1}
   .lot{order:-2}
