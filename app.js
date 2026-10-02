@@ -214,6 +214,17 @@
   addEventListener('hashchange', () => requestAnimationFrame(swim));
   swim();
 
+  /* ---------- Figma prototypes load only when asked, so the page stays light ---------- */
+  document.querySelectorAll('.figma-load').forEach(btn => btn.addEventListener('click', () => {
+    const frame = btn.closest('.figma-frame');
+    const iframe = document.createElement('iframe');
+    iframe.src = frame.dataset.src;
+    iframe.title = frame.dataset.title;
+    iframe.allowFullscreen = true;
+    frame.appendChild(iframe);
+    frame.querySelector('.figma-poster').hidden = true;
+  }));
+
   /* ---------- screenshot lightbox ---------- */
   const box = document.getElementById('lightbox');
   const boxImg = box.querySelector('img'), boxCap = box.querySelector('p');

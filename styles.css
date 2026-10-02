@@ -410,6 +410,17 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .tear-here{color:var(--accent)}
 .slip-foot{text-align:center;padding-top:28px;margin-top:28px;border-top:1px dashed var(--line);font-size:11.5px}
 
+/* ---------- Figma prototypes: a poster that swaps in the live embed on request ---------- */
+.figma-frame{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow-shot)}
+.figma-poster{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:10px;text-align:center;padding:24px;
+  background:radial-gradient(circle,var(--line) 1.2px,transparent 1.6px) 0 0/18px 18px}
+.figma-poster b{font:800 clamp(20px,2.6vw,28px)/1.15 var(--f-body);max-width:24ch}
+.figma-poster p{color:var(--muted);max-width:40ch}
+.figma-poster .mono{color:var(--accent)}
+.figma-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.figma-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#2c2c2c}
+@media (max-width:480px){.figma-frame{aspect-ratio:3/4}}
+
 /* ---------- back of pack (shared footer) ---------- */
 .back-sec{padding-block:72px;border-top:1px solid var(--line);position:relative}
 .back{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:end}
