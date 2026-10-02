@@ -39,9 +39,10 @@
 .lid-name{color:var(--print-ink);text-shadow:3px 4px 0 var(--print-cream),5px 6px 0 var(--print-coral);font-size:clamp(40px,9.6vw,62px)}
 .banner{background:var(--print-ink);color:var(--print-butter)}
 .school{color:var(--print-coral)}
-.arch{width:100%;max-width:220px;height:auto;display:block;overflow:visible;margin-top:6px}
-.arch text{font:500 12.5px var(--f-mono);letter-spacing:.12em;fill:var(--print-ink);text-transform:uppercase}
-.sparkles{position:absolute;inset:0;pointer-events:none}
+.lid .est{display:none}
+.arch{width:100%;max-width:230px;height:auto;display:block;overflow:visible;margin-top:8px}
+.arch text{font:500 12px var(--f-mono);letter-spacing:.1em;fill:var(--print-ink);text-transform:uppercase}
+.sparkles{display:block;position:absolute;inset:0;pointer-events:none}
 .sparkles i{position:absolute;color:var(--print-cream);font-style:normal;font-size:18px;line-height:1}
 .roll{background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(255,255,255,.55) 44%,rgba(255,255,255,0) 58%,rgba(0,0,0,.4)),var(--print-red)}
 .sticker{background:var(--print-butter);color:var(--print-ink);border-color:rgba(31,42,85,.5);outline-color:var(--print-butter);font-size:16px}

@@ -9,12 +9,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="theme-pastel.css">
+<link rel="stylesheet" href="theme-pastel.css" id="pastel-css">
+<script>try{if(localStorage.getItem('tin-style')==='classic'){document.getElementById('pastel-css').disabled=true;document.documentElement.dataset.style='classic'}}catch(e){}</script>
 </head>
 <body>
 <div class="wrap">
   <nav aria-label="Main">
     <a class="brand" href="#top"><i></i>Aj Hervey</a>
+    <div class="style-switch" role="group" aria-label="Packaging style">
+      <button type="button" data-style="pastel" aria-pressed="true"><i></i>Pastel</button>
+      <button type="button" data-style="classic" aria-pressed="false"><i></i>Classic</button>
+    </div>
     <div class="nav-links">
       <a href="#work" data-cases="mew2 oracle mychart intune">Work</a>
       <a href="#resume">Résumé</a>
@@ -47,7 +52,8 @@
               <div class="lid-clip">
                 <div class="lid" id="lid" aria-hidden="true">
                   <div class="sparkles"><i style="top:18%;left:12%">✦</i><i style="top:30%;right:12%;font-size:13px">✦</i><i style="top:66%;left:14%;font-size:12px">✦</i><i style="top:70%;right:15%">✦</i></div>
-                  <svg class="arch" viewBox="0 0 260 64" aria-hidden="true"><path id="lid-arc" d="M18 60 A118 118 0 0 1 242 60" fill="none"/><text><textPath href="#lid-arc" startOffset="50%" text-anchor="middle">Est. 2019 · Knoxville, TN</textPath></text></svg>
+                  <span class="mono est">Est. 2019 · Knoxville, TN</span>
+                  <svg class="arch" viewBox="0 0 260 46" aria-hidden="true"><path id="lid-arc" d="M14 42 A270 270 0 0 1 246 42" fill="none"/><text><textPath href="#lid-arc" startOffset="50%" text-anchor="middle">Est. 2019 · Knoxville, TN</textPath></text></svg>
                   <div class="lid-mid">
                     <span class="mono" style="color:var(--print-cream);opacity:.8">Finest quality</span>
                     <div class="lid-name">Aj<br>Hervey</div>
