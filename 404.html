@@ -10,7 +10,7 @@
   // site's own empty-tin page.
   (function () {
     // If the site is served from a project folder, list that folder name here.
-    var projectFolders = ['aj-portfolio'];
+    var projectFolders = ['portfolio', 'aj-portfolio'];
     var seg = location.pathname.split('/')[1];
     var base = projectFolders.indexOf(seg) !== -1 ? '/' + seg + '/' : '/';
     location.replace(base + '#empty');
